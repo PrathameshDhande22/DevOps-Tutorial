@@ -36,5 +36,7 @@ COPY . /app/
 
 # Expose the Port
 EXPOSE 8080
-ENTRYPOINT ["waitress-serve"]
-CMD ["--host", "0.0.0.0", "app:app"]
+
+# Entrypoint
+ENTRYPOINT [ "waitress-serve" ]
+CMD ["--host=0.0.0.0", "--port=8080", "app:app"]
