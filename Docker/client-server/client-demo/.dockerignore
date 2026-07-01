@@ -1,0 +1,7 @@
+Dockerfile
+node_modules/
+.env
+.env.example
+README.md
+dist/
+
