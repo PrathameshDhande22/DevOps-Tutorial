@@ -16,8 +16,14 @@ services:
     # Configure the Environment Variables for the service
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: /run/secrets/db_password
       POSTGRES_DB: mydatabase
+    # Consume the secret
+    secrets:
+      - db_password
+    # Defining the Volume
+    volumes:
+      - pgdata:/var/lib/postgresql/
 
   # Define the another service
   pgweb:
@@ -33,3 +39,8 @@ services:
     depends_on:
       postgres:
         condition: service_started
+
+# Define the secrets to be used in the services
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
