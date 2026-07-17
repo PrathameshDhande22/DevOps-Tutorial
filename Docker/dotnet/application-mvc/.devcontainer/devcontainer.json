@@ -1,0 +1,48 @@
+{
+  "name": "application-mvc Dev Container",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "forwardPorts": [
+    7290,
+    5161,
+    5432,
+    5050
+  ],
+  "portsAttributes": {
+    "7290": {
+      "label": "ASP.NET App (HTTPS)",
+      "onAutoForward": "openBrowser"
+    },
+    "5161": {
+      "label": "ASP.NET App (HTTP)",
+      "onAutoForward": "notify"
+    },
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "silent"
+    },
+    "5050": {
+      "label": "pgAdmin",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "dotnet restore && dotnet ef database update",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "ms-azuretools.vscode-docker",
+        "ms-ossdata.vscode-pgsql",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "dotnet.defaultSolution": "application-mvc.sln"
+      }
+    }
+  }
+}

@@ -15,6 +15,7 @@ namespace application_mvc.Controllers
 
         public IActionResult Index()
         {
+            ViewData["Message"] = "Welcome to the DevContainer ASP.NET Core Web Application!";
             return View();
         }
 
